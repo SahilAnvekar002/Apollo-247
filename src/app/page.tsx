@@ -59,7 +59,7 @@ export default function Home() {
   // function to fetch doctor data with api
   const filterDoctors = async (filters: Filters) => {
     const queryParams = new URLSearchParams(filters as Record<string, string>).toString();
-    const data = await fetch(`https://apollo247-alpha.vercel.app/api/list-doctor-with-filter?${queryParams}`);
+    const data = await fetch(`${process.env.NEXT_PUBLIC_HOST!}/api/list-doctor-with-filter?${queryParams}`);
     const json = await data.json();
     if (json.success) {
       setDoctors(json.payload);
